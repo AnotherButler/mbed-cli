@@ -63,7 +63,7 @@ mbed CLI is supported on Windows, Linux and Mac OS X. We're keen to learn about 
     <span class="tips">**Note:** The directories of Git and Mercurial executables (`git` and `hg`) need to be in your system's PATH.</span>
 
 * **Command-line compiler or IDE Toolchain** - mbed CLI invokes the [mbed OS 5](https://github.com/ARMmbed/mbed-os) tools for various features, like compiling, testing and exporting to industry standard toolchains. To compile your code, you will need either of these:
-    * Compilers: GCC ARM, ARM Compiler 5, IAR
+    * Compilers: GNU ARM Embedded Toolchain, ARM Compiler 5, IAR
     * Toolchains: Keil uVision, DS-5, IAR Workbench
 
 
@@ -304,7 +304,7 @@ More information about mbed CLI configuration is available in the [configuration
 Edit `mbed_settings.py` to set your toolchain:
 
 * If you want to use the [ARM Compiler toolchain](https://developer.arm.com/products/software-development-tools/compilers/arm-compiler-5/downloads), set `ARM_PATH` to the *base* directory of your ARM Compiler installation (example: C:\Program Files\ARM\armcc5.06). The recommended version of the ARM Compiler toolchain is 5.06.
-* If you want to use the [GCC ARM Embedded toolchain](https://launchpad.net/gcc-arm-embedded), set `GCC_ARM_PATH` to the *binary* directory of your GCC ARM installation (example: C:\Program Files\GNU Tools ARM Embedded\4.9 2015q2\bin). Use versions 4.9 of GCC ARM Embedded; version 5.0 or any version above might be incompatible with the tools.
+* If you want to use the [GNU ARM Embedded Toolchain](https://launchpad.net/gcc-arm-embedded), set `GCC_ARM_PATH` to the *binary* directory of your GNU ARM Embedded Toolchain installation (example: C:\Program Files\GNU Tools ARM Embedded\4.9 2015q2\bin). Use versions 4.9 of GNU ARM Embedded Toolchain; version 5.0 or any version above might be incompatible with the tools.
 
 As a rule, since `mbed_settings.py` contains local settings (possibly relevant only to a single OS on a single machine), it should not be versioned. 
 
@@ -345,7 +345,7 @@ Image: BUILD/K64F/GCC_ARM/mbed-os-program.bin
 The arguments for *compile* are:
 
 * `-m <MCU>` to select a target. If 'detect' or 'auto' parameter is passed then mbed CLI will attempt to detect the connected target and compile against it.
-* `-t <TOOLCHAIN>` to select a toolchain (of those defined in `mbed_settings.py`, see above). The value can be either `ARM` (ARM Compiler 5), `GCC_ARM` (GNU ARM Embedded), or `IAR` (IAR Embedded Workbench for ARM).
+* `-t <TOOLCHAIN>` to select a toolchain (of those defined in `mbed_settings.py`, see above). The value can be either `ARM` (ARM Compiler 5), `GCC_ARM` (GNU ARM Embedded Toolchain), or `IAR` (IAR Embedded Workbench for ARM).
 * `--source <SOURCE>` to select the source directory. The default is `.` (the current directorty). You can specify multiple source locations, even outside the program tree.
 * `--build <BUILD>` to select the build directory. Default: `BUILD/` inside your program.
 * `--profile <PATH_TO_BUILD_PROFILE>` to select a path to a build profile configuration file. Example: mbed-os/tools/profiles/debug.json
@@ -506,7 +506,7 @@ mbedgt: completed in 21.28 sec
 
 The arguments to `test` are:
 * `-m <MCU>` to select a target for the compilation. If 'detect' or 'auto' parameter is passed then mbed CLI will attempt to detect the connected target and compile against it.
-* `-t <TOOLCHAIN>` to select a toolchain (of those defined in `mbed_settings.py`, see above), where `toolchain` can be either `ARM` (ARM Compiler 5), `GCC_ARM` (GNU ARM Embedded), or `IAR` (IAR Embedded Workbench for ARM).
+* `-t <TOOLCHAIN>` to select a toolchain (of those defined in `mbed_settings.py`, see above), where `toolchain` can be either `ARM` (ARM Compiler 5), `GCC_ARM` (GNU ARM Embedded Toolchain), or `IAR` (IAR Embedded Workbench for ARM).
 * `--compile-list` to list all the tests that can be built
 * `--run-list` to list all the tests that can be ran (they must be built first)
 * `--compile` to only compile the tests
@@ -800,7 +800,7 @@ Here is a list of currently implemented configuration settings:
 
  * `target` - defines the default target for `compile`, `test` and `export`; an alias of `mbed target`. Default: none.
  * `toolchain` - defines the default toolchain for `compile` and `test`; can be set through `mbed toolchain`. Default: none.
- * `ARM_PATH`, `GCC_ARM_PATH`, `IAR_PATH` - defines the default path to ARM Compiler, GCC ARM and IAR Workbench toolchains. Default: none.
+ * `ARM_PATH`, `GCC_ARM_PATH`, `IAR_PATH` - defines the default path to ARM Compiler, GNU ARM Embedded Toolchain and IAR Workbench toolchains. Default: none.
  * `protocol` - defines the default protocol used for importing or cloning of programs and libraries. The possible values are `https`, `http` and `ssh`. Use `ssh` if you have generated and registered SSH keys (Public Key Authentication) with a service like GitHub, GitLab, Bitbucket, etc. Read more about SSH keys [here](https://help.github.com/articles/generating-an-ssh-key/) Default: `https`.
  * `depth` - defines the *clone* depth for importing or cloning and applies only to *Git* repositories. Note that while this option may improve cloning speed, it may also prevent you from correctly checking out a dependency tree when the reference revision hash is older than the clone depth. Read more about shallow clones [here](https://git-scm.com/docs/git-clone). Default: none.
  * `cache` - defines the local path that will be used to store minimalistic copies of the imported or cloned repositories, and attempts to use it to minimize traffic and speed up future imports of the same repositories. Use `on` or `enabled` to turn on caching in the system temp path. Default: none (disabled).
