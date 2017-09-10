@@ -692,7 +692,7 @@ Both `git commit & git push` and `mbed publish` push the new revisions to your f
 
 Through the workflow explained above, Mbed CLI maintains association to the original repository (which you may want to send a pull request to) and records references with the revision hashes that you push to your fork. Until your pull request (PR) is accepted, all recorded references are invalid. Once the PR is accepted, all revision hashes from your fork become part the original repository, making them valid.
 
-### Updating programs and libraries
+#### Updating programs and libraries
 
 You can update programs and libraries on your local machine so that they pull in changes from the remote sources (Git or Mercurial).
 
